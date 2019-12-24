@@ -29,7 +29,8 @@ export default {
   },
   methods: {
     getPostList() {
-      return JSON.parse(localStorage.getItem("post_list"));
+      const postList = JSON.parse(localStorage.getItem("post_list"));
+      return postList ? postList : [];
     },
     onUpdatePostSuccess() {
       this.postList = this.getPostList();

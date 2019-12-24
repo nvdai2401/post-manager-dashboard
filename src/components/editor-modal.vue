@@ -78,7 +78,8 @@ export default {
   },
   methods: {
     getPostList() {
-      return JSON.parse(localStorage.getItem("post_list"));
+      const postList = JSON.parse(localStorage.getItem("post_list"));
+      return postList ? postList : [];
     },
     submitForm() {
       if (this.title && this.postContent && this.tags) {
@@ -131,11 +132,8 @@ export default {
       localStorage.setItem("post_list", JSON.stringify(this.postList));
     },
     createPost() {
-      const postId = this.postList.length
-        ? `post-${this.postList.length + 1}-${generateID(6)}`
-        : `first-post-${generateID(6)}`;
       const newPost = {
-        id: postId,
+        id: `post-${this.postList.length + 1}-${generateID(6)}`,
         title: this.title,
         content: this.postContent,
         tags: this.tags.split(",").map(str => str.trim().replace(/\s+/g, " ")),
