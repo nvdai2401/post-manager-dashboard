@@ -11,6 +11,6 @@
   
 ### Project setup
 1. Open a terminal and type: `git@github.com:nvdai2401/post-manager-dashboard.git`
-2. Then type `yarn``
+2. Then type `yarn`
 3. Finally type `yarn serve` to explore my application.
 
