@@ -1,5 +1,5 @@
 # Post Manager Dashboard - A simple Admin SPA to manage posts
-Visit my application at: http://post-manager-dashboard.herokuapp.comh
+Visit my application at: http://post-manager-dashboard.herokuapp.com
 
 ### Features
 - People could login/logout to the system.
