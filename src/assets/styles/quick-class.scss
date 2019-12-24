@@ -48,6 +48,27 @@ $padding: 6 12 24 30;
   min-height: 100vh;
 }
 
+.form-item {
+  label {
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
+
+  input,
+  textarea {
+    font-family: inherit;
+    display: block;
+    margin-top: 6px;
+    width: 100%;
+    line-height: 1.5rem;
+    padding: 6px;
+    font-size: 0.875rem;
+    border-radius: 6px;
+    border: 1px solid #696865;
+    outline: none;
+  }
+}
+
 .button {
   padding: 12px 24px;
   outline: none;

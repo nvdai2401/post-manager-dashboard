@@ -67,26 +67,6 @@ export default {
   h2 {
     text-align: center;
   }
-
-  .form-item {
-    label {
-      font-weight: 500;
-      font-size: 1.2rem;
-    }
-
-    input {
-      font-family: inherit;
-      display: block;
-      margin-top: 6px;
-      width: 100%;
-      line-height: 1.5rem;
-      padding: 6px;
-      font-size: 0.875rem;
-      border-radius: 6px;
-      border: 1px solid #696865;
-      outline: none;
-    }
-  }
 }
 .alert-text {
   font-size: 0.875rem;

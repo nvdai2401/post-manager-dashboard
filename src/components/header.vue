@@ -1,12 +1,47 @@
 <template>
   <div class="header">
-    <h1>This is side-bar</h1>
+    <button class="button button-primary" @click="openPostEditor">
+      Đăng bài viết
+    </button>
+    <EditorModal
+      modalTitle="Đăng bài viết"
+      :editorModalVisible="editorModalVisible"
+      :post="{}"
+      @createPostSuccess="onCreatePostSuccess"
+      @closeEditor="closeEditor"
+    />
   </div>
 </template>
 
 <script>
+import EditorModal from "@/components/editor-modal";
+import { EventBus } from "@/utils/event-bus";
 export default {
-  name: "side-bar"
+  components: {
+    EditorModal
+  },
+  data() {
+    return {
+      editorModalVisible: false,
+      removingPostModalVisible: false,
+      title: "",
+      postContent: "",
+      tags: "",
+      confirmTitle: ""
+    };
+  },
+  methods: {
+    openPostEditor() {
+      this.editorModalVisible = true;
+    },
+    closeEditor() {
+      this.editorModalVisible = false;
+    },
+    onCreatePostSuccess() {
+      EventBus.$emit("createPostSuccess");
+      this.closeEditor();
+    }
+  }
 };
 </script>
 
@@ -18,5 +53,9 @@ export default {
   position: fixed;
   z-index: 100;
   left: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 60px;
 }
 </style>
