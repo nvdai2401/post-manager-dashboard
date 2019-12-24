@@ -12,10 +12,16 @@
 
 <script>
 export default {
-  name: "header",
+  name: "side-bar",
   computed: {
     routeName() {
       return this.$route.name;
+    }
+  },
+  methods: {
+    signOut() {
+      localStorage.setItem("is_authenticated", false);
+      this.$router.push({ name: "sign-in" });
     }
   }
 };

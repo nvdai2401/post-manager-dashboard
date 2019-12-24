@@ -24,4 +24,10 @@ const router = new VueRouter({
   routes
 });
 
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = JSON.parse(localStorage.getItem("is_authenticated"));
+  if (!isAuthenticated && to.name !== "sign-in") next("/sign-in");
+  else next();
+});
+
 export default router;
