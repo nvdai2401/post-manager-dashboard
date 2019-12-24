@@ -1,0 +1,49 @@
+$margin: 6 12 24 30;
+$padding: 6 12 24 30;
+
+@each $i in $margin {
+  .m-t-#{$i} {
+    margin-top: $i + px
+  }
+
+  .m-b-#{$i} {
+    margin-bottom: $i + px
+  }
+
+  .m-l-#{$i} {
+    margin-left: $i + px
+  }
+
+  .m-r-#{$i} {
+    margin-right: $i + px
+  }
+}
+
+@each $i in $padding {
+  .pd-#{$i} {
+    padding: $i + px
+  }
+
+  .p-t-#{$i} {
+    padding-top: $i + px
+  }
+
+  .p-b-#{$i} {
+    padding-bottom: $i + px
+  }
+
+  .p-l-#{$i} {
+    padding-left: $i + px
+  }
+
+  .p-r-#{$i} {
+    padding-right: $i + px
+  }
+}
+
+.main-view {
+  padding-top: 72px;
+  padding-left: 250px;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}

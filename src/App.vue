@@ -1,32 +1,41 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div v-if="routeName !== 'sign-in'">
+      <SideBar />
+      <Header />
     </div>
     <router-view />
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Header from "@/components/header.vue";
+import SideBar from "@/components/side-bar.vue";
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  name: "home",
+  components: {
+    SideBar,
+    Header
+  },
+  computed: {
+    routeName() {
+      return this.$route.name;
     }
   }
+};
+</script>
+
+<style lang="scss">
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,cyrillic");
+@import "assets/styles/resets";
+@import "assets/styles/quick-class";
+
+#app {
+  font-family: "RobotoDraft", "Roboto", "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #000000;
+  font-size: 16px;
 }
 </style>
