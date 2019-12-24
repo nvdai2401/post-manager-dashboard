@@ -5,6 +5,9 @@
       <li :class="[{ active: routeName === 'post-list' }, 'p-l-12']">
         <router-link to="/">Bài đăng</router-link>
       </li>
+      <li :class="[{ active: routeName === 'info' }, 'p-l-12']">
+        <router-link to="/info">Thông tin cá nhân</router-link>
+      </li>
       <li class="p-l-12" @click="signOut">Đăng xuất</li>
     </ul>
   </div>
