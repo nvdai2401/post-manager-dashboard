@@ -6,6 +6,7 @@
           :key="post.id"
           :post="post"
           @updatePostSuccess="onUpdatePostSuccess"
+          @removingPostSuccess="onRemovingPostSuccess"
           class="m-t-24"
         />
       </template>
@@ -32,6 +33,11 @@ export default {
     },
     onUpdatePostSuccess() {
       this.postList = this.getPostList();
+    },
+    onRemovingPostSuccess(id) {
+      const postIndex = this.postList.findIndex(post => post.id === id);
+      this.postList.splice(postIndex, 1);
+      localStorage.setItem("post_list", JSON.stringify(this.postList));
     }
   },
   mounted() {

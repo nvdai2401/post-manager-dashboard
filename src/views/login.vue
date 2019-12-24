@@ -1,6 +1,6 @@
 <template>
-  <div class="sign-in">
-    <div class="sign-in-form">
+  <div class="login">
+    <div class="login-form">
       <h2>Đăng nhập</h2>
       <div class="form-item m-b-12">
         <label>Username: </label>
@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: "sign-in",
+  name: "login",
   data() {
     return {
       userName: "admin",
@@ -45,7 +45,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.sign-in {
+.login {
   height: 100vh;
   background: linear-gradient(
     to left,
@@ -56,7 +56,7 @@ export default {
   justify-content: center;
 }
 
-.sign-in-form {
+.login-form {
   width: 300px;
   height: fit-content;
   margin-top: 180px;

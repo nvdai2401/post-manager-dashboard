@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div v-if="routeName !== 'sign-in'">
+    <div v-if="routeName !== 'login'">
       <SideBar />
       <Header />
     </div>
@@ -35,7 +35,7 @@ export default {
   font-family: "Roboto", "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #000000;
+  color: #333e49;
   font-size: 16px;
 }
 </style>

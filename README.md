@@ -1,24 +1,16 @@
-# post-manager-dashboard
+# Post Manager Dashboard - A simple Admin SPA to manage posts
 
-## Project setup
-```
-yarn install
-```
+### Features
+- People could login/logout to the system.
+- Logged users could CRUD posts.
+- Redirect to login page if guest accesses CRUD post pages.
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+### Tech stacks
+- Using Vue JS, SCSS to develop UI
+- Using localStorage to store data (post list and authentication info)
+  
+### Project setup
+1. Open a terminal and type: `git@github.com:nvdai2401/post-manager-dashboard.git`
+2. Then type `yarn``
+3. Finally type `yarn serve` to explore my application.
 
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

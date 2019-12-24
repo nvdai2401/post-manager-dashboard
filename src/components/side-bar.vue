@@ -21,7 +21,7 @@ export default {
   methods: {
     signOut() {
       localStorage.setItem("is_authenticated", false);
-      this.$router.push({ name: "sign-in" });
+      this.$router.push({ name: "login" });
     }
   }
 };
@@ -33,7 +33,7 @@ export default {
   left: 0;
   width: 250px;
   height: 100vh;
-  background-color: #0281b7;
+  background-color: #46185f;
 }
 h1 {
   color: #ffffff;
@@ -48,7 +48,7 @@ ul {
   li {
     font-size: 1rem;
     line-height: 36px;
-    border-bottom: 1px solid #239fd5;
+    border-bottom: 1px solid #5c3e8b;
 
     a {
       display: inline-block;
@@ -57,12 +57,12 @@ ul {
 
     &:hover {
       cursor: pointer;
-      background-color: #239fd5;
+      background-color: #5c3e8b;
     }
   }
 }
 
 .active {
-  background-color: #239fd5;
+  background-color: #5c3e8b;
 }
 </style>

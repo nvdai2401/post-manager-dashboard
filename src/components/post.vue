@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="post pd-24">
+    <div class="post pd-24" @click="openPostEditor">
       <h2 class="post__title m-b-12">{{ post.title }}</h2>
       <p class="post__content m-b-12">
         {{ post.content }}
@@ -16,22 +16,58 @@
         <p class="post__updated-at">Ngày sửa: {{ updatedAt }}</p>
       </div>
       <div class="post__widget">
-        <font-awesome-icon class="m-r-12" icon="pencil-alt" size="lg" />
-        <font-awesome-icon icon="trash-alt" size="lg" />
+        <font-awesome-icon
+          class="m-r-12"
+          icon="pencil-alt"
+          size="lg"
+          @click.stop="openPostEditor"
+        />
+        <font-awesome-icon
+          icon="trash-alt"
+          size="lg"
+          @click.stop="removingPostModalVisible = true"
+        />
       </div>
     </div>
+
+    <EditorModal
+      modalTitle="Cập nhật bài đăng"
+      :editorModalVisible="editorModalVisible"
+      :post="post"
+      @updatePostSuccess="onUpdatePostSuccess"
+      @closeEditor="editorModalVisible = false"
+    />
+
+    <RemovingPostModal
+      :post="post"
+      :removingPostModalVisible="removingPostModalVisible"
+      :removingWarningVisible="removingWarningVisible"
+      :closeRemovingPostModal="closeRemovingPostModal"
+      :confirmRemoving="confirmRemoving"
+    />
   </div>
 </template>
 
 <script>
 import { formatDate } from "@/utils/shared";
 export default {
-  name: "Post",
+  name: "post",
   props: {
     post: {
       type: Object,
       default: () => {}
     }
+  },
+  components: {
+    EditorModal: () => import("@/components/editor-modal"),
+    RemovingPostModal: () => import("@/components/removing-post-modal")
+  },
+  data() {
+    return {
+      editorModalVisible: false,
+      removingPostModalVisible: false,
+      removingWarningVisible: false
+    };
   },
   computed: {
     createdAt() {
@@ -39,6 +75,27 @@ export default {
     },
     updatedAt() {
       return formatDate(new Date(this.post.updated_at));
+    }
+  },
+  methods: {
+    openPostEditor() {
+      this.editorModalVisible = true;
+    },
+    onUpdatePostSuccess() {
+      this.$emit("updatePostSuccess");
+      this.editorModalVisible = false;
+    },
+    closeRemovingPostModal() {
+      this.removingPostModalVisible = false;
+    },
+    confirmRemoving(confirmTitle) {
+      if (confirmTitle === this.post.title) {
+        this.removingWarningVisible = false;
+        this.closeRemovingPostModal();
+        this.$emit("removingPostSuccess", this.post.id);
+      } else {
+        this.removingWarningVisible = true;
+      }
     }
   }
 };
@@ -58,7 +115,7 @@ export default {
 
   &__title {
     margin-bottom: 12px;
-    color: #5c3e8b;
+    color: #46185f;
   }
 
   &__content {

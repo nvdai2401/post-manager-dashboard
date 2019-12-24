@@ -72,7 +72,10 @@ $padding: 6 12 24 30;
 .button {
   padding: 12px 24px;
   outline: none;
-  color: #ffffff;
+  color: #000000;
+  background-color: #ffffff;
+  outline: none;
+  border: 1px solid #696865;
   font-size: 1rem;
   border-radius: 6px;
   font-weight: 600;
@@ -88,11 +91,23 @@ $padding: 6 12 24 30;
 }
 
 .button-primary {
+  color: #ffffff;
   border: 1px solid #5c3e8b;
   background-color: #5c3e8b;
 
   &:active {
     background-color: #ffffff;
     color: #5c3e8b;
+  }
+}
+
+.button-secondary {
+  color: #ffffff;
+  border: 1px solid #ef4339;
+  background-color: #ef4339;
+
+  &:active {
+    background-color: #ffffff;
+    color: #ef4339;
   }
 }

@@ -82,7 +82,15 @@ export default {
     },
     submitForm() {
       if (this.title && this.postContent && this.tags) {
-        if (!Object.keys(this.post).length) {
+        if (Object.keys(this.post).length) {
+          if (this.checkChanging()) {
+            this.updatePostList();
+            this.alertTextVisible = false;
+            this.$emit("updatePostSuccess");
+          } else {
+            this.closeEditorModal();
+          }
+        } else {
           this.createPost();
           this.resetForm();
           this.$emit("createPostSuccess");
@@ -94,6 +102,33 @@ export default {
     closeEditorModal() {
       this.alertTextVisible = false;
       this.$emit("closeEditor");
+    },
+    checkChanging() {
+      const { title, content, tags } = this.post;
+
+      if (
+        title !== this.title ||
+        content !== this.postContent ||
+        tags.toString() !== this.tags
+      )
+        return true;
+      return false;
+    },
+    updatePostList() {
+      const updatedPost = {
+        title: this.title,
+        content: this.postContent,
+        tags: this.tags.split(",").map(str => str.trim().replace(/\s+/g, " ")),
+        updated_at: new Date()
+      };
+      const postIndex = this.postList.findIndex(
+        item => item.id === this.post.id
+      );
+      this.postList[postIndex] = {
+        ...this.postList[postIndex],
+        ...updatedPost
+      };
+      localStorage.setItem("post_list", JSON.stringify(this.postList));
     },
     createPost() {
       const postId = this.postList.length
@@ -114,6 +149,14 @@ export default {
       this.title = "";
       this.postContent = "";
       this.tags = "";
+    }
+  },
+  mounted() {
+    if (this.post && Object.keys(this.post).length) {
+      const { title, content, tags } = this.post;
+      this.title = title;
+      this.postContent = content;
+      this.tags = tags.toString();
     }
   }
 };

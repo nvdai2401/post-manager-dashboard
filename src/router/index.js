@@ -11,10 +11,10 @@ const routes = [
       import(/* webpackChunkName: "post-list" */ "../views/post-list.vue")
   },
   {
-    path: "/sign-in",
-    name: "sign-in",
+    path: "/login",
+    name: "login",
     component: () =>
-      import(/* webpackChunkName: "sign-in" */ "../views/sign-in.vue")
+      import(/* webpackChunkName: "login" */ "../views/login.vue")
   }
 ];
 
@@ -26,7 +26,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   const isAuthenticated = JSON.parse(localStorage.getItem("is_authenticated"));
-  if (!isAuthenticated && to.name !== "sign-in") next("/sign-in");
+  if (!isAuthenticated && to.name !== "login") next("/login");
   else next();
 });
 

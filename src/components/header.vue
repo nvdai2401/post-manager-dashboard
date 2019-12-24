@@ -22,12 +22,7 @@ export default {
   },
   data() {
     return {
-      editorModalVisible: false,
-      removingPostModalVisible: false,
-      title: "",
-      postContent: "",
-      tags: "",
-      confirmTitle: ""
+      editorModalVisible: false
     };
   },
   methods: {
